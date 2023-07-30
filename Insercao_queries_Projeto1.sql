@@ -125,14 +125,6 @@ select SocialName, CNPJ, contact, Pname as 'Product_Name', category, quantity fr
 	inner join supplier as s on s.idSupplier = ps.idPsSupplier;
     
 
-show tables;
-select * from productsupplier;
-select * from clients;   
-select * from orders; 
-select * from productorder;
-select * from product;
-select * from supplier;
-
 -- Recuperar média de avaliação dos produtos para os pedidos que estão em processamento
 select avg(avaliacao) as 'Média de avaliação' from orders as o
 	inner join productorder as po on o.idOrder = po.idPOorder
@@ -146,5 +138,38 @@ select avg(avaliacao) as 'Média de avaliação' from orders as o
     inner join product as p on p.idProduct = po.idPOproduct
     where orderStatus = "Em processamento";
     
+    
+-- Quantidade de pedidos que foram feitos por cada cliente
+select concat(Fname, ' ', Lname) as 'Complete_Name', count(*) as 'Order_Quantity' from orders as o 
+	inner join clients as c on o.idOrderClient = c.idClient
+	group by Fname
+    order by count(*) desc;
+    
+
+-- Algum vendedor também é fornecedor?
+select * from seller as s 
+	inner join productseller as ps on s.idSeller = ps.idPseller
+	inner join product as p on ps.idPproduct = p.idProduct
+    inner join productsupplier as pds on p.idProduct = pds.idPsProduct
+    inner join supplier as sp on pds.idPsSupplier = sp.idSupplier;
+
+
+-- Relação de produtos fornecedores e estoques
+show tables;
+select * from supplier;
+select * from productsupplier;
+select * from product;
+select * from productstorage;
+
+select SocialName as 'Fornecedor', Pname as 'Produto', category as 'Categoria', storageLocation as 'Estoque', pst.quantity as 'Quantidade' from supplier as s
+	inner join productsupplier as psu on s.idSupplier = psu.idPsSupplier
+    inner join product as p on p.idProduct = psu.idPsProduct
+    inner join productstorage as pst on pst.idProdStorage = p.idProduct;
+
+
+-- Relação de nomes dos fornecedores e nomes dos produtos;
+select SocialName as 'Fornecedor', Pname as 'Produto', category as 'Categoria' from supplier as s
+	inner join productsupplier as psu on s.idSupplier = psu.idPsSupplier
+    inner join product as p on p.idProduct = psu.idPsProduct;
     
     
