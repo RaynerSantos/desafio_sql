@@ -12,10 +12,14 @@ Foi replicado o cenário proposto de e-commerce para modelagem do projeto 1.
  - Criação das tabelas necessárias conforme modelo
  - Queries com as seguintes perguntas respondidas:
 
-1. total do número de clientes;
-2. clientes que possuem pedidos e seu status;
-3. quantos pedidos foram realizados por cada cliente;
-4. soma total da quantidade no estoque por cidade;
-5. quais são os forcenecedores para cada um dos produtos a venda;
-6. média de avaliação dos produtos para os pedidos que estão em processamento;
-7. avaliação dos produtos para todos os pedidos que estão em processamento.
+1. Total do número de clientes;
+2. Clientes que possuem pedidos e seu status;
+3. Quantos pedidos foram realizados por cada cliente;
+4. Soma total da quantidade no estoque por cidade;
+5. Quais são os forcenecedores para cada um dos produtos a venda;
+6. Média de avaliação dos produtos para os pedidos que estão em processamento;
+7. Avaliação dos produtos para todos os pedidos que estão em processamento;
+8. Quantidade de pedidos que foram feitos por cada cliente;
+9. Algum vendedor também é fornecedor?
+10. Relação de produtos fornecedores e estoques;
+11. Relação de nomes dos fornecedores e nomes dos produtos.
